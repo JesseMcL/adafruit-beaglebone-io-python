@@ -74,10 +74,10 @@ Setup the pin for output, and write GPIO.HIGH or GPIO.LOW. Or you can use 1 or 0
 
 **GPIO Input** 
 
-Setup the pin for input, and set GPIO.PUD_NONE, GPIO.PUD_DOWN or GPIO.PUD_UP. Or you can use 0, 1 or 2.::
+Setup the pin for input, and set GPIO.PUD_OFF, GPIO.PUD_DOWN or GPIO.PUD_UP. Or you can use 0, 1 or 2.::
 
     import Adafruit_BBIO.GPIO as GPIO
-    GPIO.setup("P8_16", GPIO.IN, GPIO.PUD_UP)
+    GPIO.setup("P8_16", GPIO.IN, pull_up_down = GPIO.PUD_UP)
     print GPIO.input("P8_14")
 	
 **On-Board LEDs**
@@ -122,11 +122,15 @@ Waiting for an edge (GPIO.RISING, GPIO.FALLING, or GPIO.BOTH::
 
 Detecting events::
 
-    GPIO.add_event_detect("P9_12", GPIO.FALLING) 
+    GPIO.add_event_detect("P9_12", GPIO.FALLING, gpio_event_callback, bouncetime=0) 
     #your amazing code here 
     #detect wherever: 
     if GPIO.event_detected("P9_12"):
       print "event detected!"
+	
+	#or specify callback function
+	def gpio_event_callback(pin):
+	    print "event detected on", pin
 
 **PWM**::
 

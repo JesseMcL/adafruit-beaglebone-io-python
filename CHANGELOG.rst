@@ -1,3 +1,9 @@
+1.0.10
+----
+* Handle conescript compatible pin names in set_pin_mode function
+* Fix segfault caused by PWM.stop on a disabled pwm
+* Add pullup/pulldown configuration to GPIO inputs using pinmux
+
 1.0.0
 ----
 * Merge pull request #108 from MatthewWest for PWM support in Linux kernel 4.1+
