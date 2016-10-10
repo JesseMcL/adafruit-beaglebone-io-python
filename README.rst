@@ -20,7 +20,7 @@ Easiest::
     
 Manual::
 
-    git clone git://github.com/adafruit/adafruit-beaglebone-io-python.git 
+    git clone git://github.com/JesseMcL/adafruit-beaglebone-io-python.git 
     #set the date and time 
     /usr/bin/ntpdate -b -s -u pool.ntp.org 
     #install dependency 
@@ -43,7 +43,7 @@ Manual::
     sudo ntpdate pool.ntp.org
     sudo apt-get update
     sudo apt-get install build-essential python-dev python-pip -y
-    git clone git://github.com/adafruit/adafruit-beaglebone-io-python.git
+    git clone git://github.com/JesseMcL/adafruit-beaglebone-io-python.git
     cd adafruit-beaglebone-io-python
     sudo python setup.py install
     cd ..
@@ -69,8 +69,17 @@ You can also refer to the pin names::
 Setup the pin for output, and write GPIO.HIGH or GPIO.LOW. Or you can use 1 or 0.::
 
     import Adafruit_BBIO.GPIO as GPIO
-    GPIO.setup("P8_14", GPIO.OUT) GPIO.output("P8_14", GPIO.HIGH)
+    GPIO.setup("P8_14", GPIO.OUT)
+	GPIO.output("P8_14", GPIO.HIGH)
 
+**GPIO Input** 
+
+Setup the pin for input, and set GPIO.PUD_NONE, GPIO.PUD_DOWN or GPIO.PUD_UP. Or you can use 0, 1 or 2.::
+
+    import Adafruit_BBIO.GPIO as GPIO
+    GPIO.setup("P8_16", GPIO.IN, GPIO.PUD_UP)
+	print GPIO.input("P8_14")
+	
 **On-Board LEDs**
 
 On-board LEDs (USR0-USR3) are handled by LED class driver rather than the GPIO pin driver.
